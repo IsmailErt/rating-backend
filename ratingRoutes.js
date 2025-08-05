@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { addRating, getAllRatings } = require('./ratingController');
+const { addRating, getAllRatings, getRatingById, updateRating, deleteRating } = require('./ratingController');
 
-// POST: Add a rating to DB
 router.post('/', addRating);
 
-// GET: Get all ratings from DB
 router.get('/', getAllRatings);
+
+router.get('/:id', getRatingById);
+
+router.put('/:id', updateRating);
+
+router.delete('/:id', deleteRating);
 
 module.exports = router;

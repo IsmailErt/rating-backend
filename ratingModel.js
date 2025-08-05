@@ -1,24 +1,22 @@
-const db = require('../storage/database');
+const db = require('./db');
 
-// Create a new rating
-function createRating(userID, moduleID, rating, callback) 
+function createRating(moduleID, rating, callback) 
 {
 
   const query = `
     
-    INSERT INTO module_ratings (userID, moduleID, rating)
-    VALUES (?, ?, ?)
+    INSERT INTO module_ratings (moduleID, rating)
+    VALUES (?, ?)
 
   `;
 
-  db.run(query, [userID, moduleID, rating], function (error) {
+  db.run(query, [moduleID, rating], function (error) {
     
     callback(error, this?.lastID);
 
   });
 }
 
-// Get average rating for a module
 
 function getAverageRating(moduleID, callback) 
 {

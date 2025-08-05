@@ -21,8 +21,7 @@ db.run(`
   CREATE TABLE IF NOT EXISTS module_ratings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     moduleId INTEGER NOT NULL,
-    userId INTEGER NOT NULL,
-    rating INTEGER NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 0 AND rating <= 5),
     createdAt TEXT DEFAULT CURRENT_TIMESTAMP
   )
 `);
